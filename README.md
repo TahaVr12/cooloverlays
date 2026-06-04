@@ -5,4 +5,8 @@
 
 For Fedora Based Distributions:
   
-  ```sudo dnf install gcc-c++ raylib-devel libX11-devel libXfixes-devel libXext-devel glfw-devel```
+  ```sudo dnf install raylib-devel libX11-devel```
+
+For Ubuntu/Debian;
+
+  ```sudo apt install libraylib-dev libx11-dev```
