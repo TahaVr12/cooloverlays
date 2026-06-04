@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 set -e
 
 APP_NAME="overlay"
@@ -18,6 +19,7 @@ case "$TARGET" in
     CXX="g++"
     BACKEND="$SRC_DIR/globalmouse_linux.cpp"
     OUT="$APP_NAME"
+    FLAGS=""
     LIBS="-lraylib -lX11 -lGL -lm -lpthread -ldl -lrt"
     ;;
   windows)
@@ -28,7 +30,8 @@ case "$TARGET" in
     fi
     BACKEND="$SRC_DIR/globalmouse_windows.cpp"
     OUT="$APP_NAME.exe"
-    LIBS="-lraylib -lopengl32 -lgdi32 -lwinmm"
+    FLAGS="-static -static-libgcc -static-libstdc++"
+    LIBS="-l:libraylib.a -l:libglfw3.a -lopengl32 -lgdi32 -lwinmm"
     ;;
   *)
     echo "wtf is '$TARGET'??? use linux or windows"
@@ -37,5 +40,5 @@ case "$TARGET" in
 esac
 
 echo ">> im buildings [$TARGET] with $CXX  ->  $OUT"
-"$CXX" "$COMMON_SRC" "$BACKEND" -o "$OUT" -I"$SRC_DIR" $LIBS
+"$CXX" "$COMMON_SRC" "$BACKEND" -o "$OUT" -I"$SRC_DIR" $FLAGS $LIBS
 echo ">> im finnish:  ./$OUT"
