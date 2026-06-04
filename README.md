@@ -34,19 +34,16 @@ sudo apt install libraylib-dev libx11-dev
 ```
 3. you will get an `overlay` (Linux) or `overlay.exe` (Windows) executable in the root or whatever you renamed `APP_NAME` to in `build.bash`.
 
-## Run it
+## how do i run it bro
 
-**Linux:** the overlay reads your mouse from `/dev/input`, which needs the `input` group. one time setup:
+**Linux:** the overlay reads your mouse from `/dev/input`, which needs the `input` group.(this is a one-time setup btw):
 ```
 sudo usermod -aG input $USER
 ```
-Then log out and back in. After that just run `./overlay` normally with no sudo needed. (`sudo ./overlay` works as a quick test, 
+then log out and back in. After that just run `./overlay` normally with no sudo needed. (`sudo ./overlay` works as a quick test, 
 but running a GUI app as root can break on Wayland, so the group is the proper fix.)
 
 **Windows:** just run `overlay.exe`. no need for admin.
-
-> Only exception (both OSes): to draw on top of an app that's *itself* running
-> as administrator/root, the overlay has to run at that level too. Normal apps and games don't need it.
 
 ## Notes
 
