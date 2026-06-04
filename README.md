@@ -1,7 +1,12 @@
+# cooloverlays
 
-### Disclaimer: If you are on Linux, the Linux session must be X11, not Wayland!
+this is a template project for raylib to do stuff on the screen with no windows, but the screen!
+it is like an overlay on a screen which dedects mouse inputs and stuff and draw on it with raylib
 
-# How to install the dependencies
+## How to install the dependencies to build
+
+For Windows, run:
+  ```pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-raylib```
 
 For Fedora Based Distributions:
   
