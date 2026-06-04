@@ -1,32 +1,56 @@
 # cooloverlays
 
-this is a template project for raylib to do stuff on the screen with no windows, but the screen!
-it is like an overlay on a screen which dedects mouse inputs and stuff and draw on it with raylib
+a template project for raylib that lets you draw on the screen itself with no window, just an overlay.
 
-## How to install the dependencies to build
+It stays on top of everything,it reads your global mouse position and clicks
+and lets those clicks pass through to whatever is underneath while you draw on top with raylib
 
-For Windows, run:
-  ```pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-raylib```
 
-For Fedora Based Distributions:
-  
-  ```sudo dnf install raylib-devel libX11-devel```
+## Install the dependencies
 
-For Ubuntu/Debian;
+**Windows** (in the MSYS2 MinGW64 shell):
+```
+pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-raylib
+```
 
-  ```sudo apt install libraylib-dev libx11-dev```
+**Fedora Based Distributions:**
+```
+sudo dnf install raylib-devel libX11-devel
+```
 
-## how to build
+**Ubuntu / Debian:**
+```
+sudo apt install libraylib-dev libx11-dev
+```
 
-  1. cd to the project root directory
-  2. run ```bash build.bash [os("linux" or "windows")]```
-  3. when it has built, there will be a file named "overlay" or "overlay.exe" executables, or a different name depending on when you set in ```build.bash```.
+## Build
 
-# Important:
+1. `cd` into the project root
+2. Run the build script, optionally passing the target OS:
+```
+   bash build.bash            # builds for the OS you're on
+   bash build.bash linux      # force Linux
+   bash build.bash windows    # force Windows
+```
+3. you will get an `overlay` (Linux) or `overlay.exe` (Windows) executable in the root or whatever you renamed `APP_NAME` to in `build.bash`.
 
-- You MUST run this as Administirator.
-  - For Linux, Just ```sudo ./overlay``` or ```sudo ./[whatever you set the executable name in build.bash]```
-  - For Windows, run the built executable with administirator bro its easy or whatever
+## Run it
 
-  
-    
+**Linux:** the overlay reads your mouse from `/dev/input`, which needs the `input` group. one time setup:
+```
+sudo usermod -aG input $USER
+```
+Then log out and back in. After that just run `./overlay` normally with no sudo needed. (`sudo ./overlay` works as a quick test, 
+but running a GUI app as root can break on Wayland, so the group is the proper fix.)
+
+**Windows:** just run `overlay.exe`. no need for admin.
+
+> Only exception (both OSes): to draw on top of an app that's *itself* running
+> as administrator/root, the overlay has to run at that level too. Normal apps and games don't need it.
+
+## Notes
+
+- Works on **X11 and Wayland** (including XWayland). The mouse is read via evdev,
+  which sits below the display server, so it doesn't care which one you're on.
+- On Wayland, mouse position is tracked from movement deltas, so it can drift from the real cursor over time,
+  set a **no acceleration** pointer to fix it if you want it to perfectly on your cursor.
