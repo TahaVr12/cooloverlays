@@ -1,7 +1,5 @@
-#!/usr/bin/env bash
 set -e
 
-# ── config ───────────────────────────────────────────────
 APP_NAME="overlay"
 SRC_DIR="src"
 COMMON_SRC="$SRC_DIR/main.cpp"
@@ -15,7 +13,6 @@ if [ -z "$TARGET" ]; then
     esac
 fi
 
-# ── per-target settings ──────────────────────────────────
 case "$TARGET" in
   linux)
     CXX="g++"
@@ -39,7 +36,6 @@ case "$TARGET" in
     ;;
 esac
 
-# ── build ────────────────────────────────────────────────
-echo ">> im building [$TARGET] with $CXX  ->  $OUT"
+echo ">> im buildings [$TARGET] with $CXX  ->  $OUT"
 "$CXX" "$COMMON_SRC" "$BACKEND" -o "$OUT" -I"$SRC_DIR" $LIBS
 echo ">> im finnish:  ./$OUT"
