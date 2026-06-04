@@ -52,12 +52,12 @@ int main()
         if (mouse.rightClicked)
             std::cout << "right click\n";
         if (mouse.middleClicked)
-            std::cout << "i middle mouse you stupid\n";
+            std::cout << "i middle mouse\n";
 
         BeginDrawing();
         ClearBackground(BLANK);
 
-        DrawCircleV(p, 3, WHITE);
+        // DrawCircleV(p, 4, WHITE); // this draws a circle at the cursor
         EndDrawing();
     }
 
