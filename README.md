@@ -9,9 +9,9 @@ also im not sure if windows works for now
 
 ## Install the dependencies
 
-**Windows** (in the MSYS2 MinGW64 shell):
+**Windows** (in PowerShell):
 ```
-pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-raylib
+C:\msys64\usr\bin\bash.exe -lc "pacman -S --needed mingw-w64-x86_64-gcc mingw-w64-x86_64-raylib"
 ```
 
 **Fedora Based Distributions:**
