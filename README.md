@@ -5,6 +5,7 @@ a template project for raylib that lets you draw on the screen itself with no wi
 It stays on top of everything,it reads your global mouse position and clicks
 and lets those clicks pass through to whatever is underneath while you draw on top with raylib
 
+also im not sure if windows works for now
 
 ## Install the dependencies
 
