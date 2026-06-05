@@ -14,7 +14,8 @@ side note: you MUST have g++ installed
 **Windows**:
 
 1. Install MSYS2
-2. Run this in powershell: ``` C:\msys64\usr\bin\bash.exe -lc "pacman -S --needed mingw-w64-x86_64-gcc mingw-w64-x86_64-raylib" ```
+2. Run this in powershell: 
+``` C:\msys64\usr\bin\bash.exe -lc "pacman -S --needed mingw-w64-x86_64-gcc mingw-w64-x86_64-raylib" ```
 
 **Fedora Based Distributions:**
 ```
