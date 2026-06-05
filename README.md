@@ -9,6 +9,8 @@ also im not sure if windows works for now
 
 ## Install the dependencies
 
+side note: you MUST have g++ installed
+
 **Windows**:
 
 1. Install MSYS2
